@@ -31,7 +31,7 @@ export default function NewItem() {
             category: category
         };
         console.log(item);
-        alert(`name:${name}, Quantity: ${quantity}, category: ${category}`);
+        alert(`name: ${name}, Quantity: ${quantity}, category: ${category}`);
         setName("");
         setCount(1);
         setCategory("produce");
@@ -39,19 +39,21 @@ export default function NewItem() {
     };
 
     const [nameTouched, setNameTouched] = useState(false);
-    const handleNameTouched = () => {
-        if (!name || name.length < 2) {
-            alert("Name must be at least 2 characters long");
-        }
+    const handleNameTouched = (event: React.FocusEvent<HTMLInputElement>) => {
         setNameTouched(true);
     };
+    const handleNameFocus = () => {
+        setNameTouched(false);
+    };
+
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-row gap-4 border-black border-2 p-4 m-4 rounded-2xl justify-content-center bg-blue-50">
       <label className=" bg-white border-black border-2 rounded-2xl p-4 justify-content-center">
         Name:
-        <input onBlur={handleNameTouched} className={nameTouched && !name ? "border border-red-500" : "hover:border-black hover:border-2"} required type="text" placeholder="Enter your name" value={name} onChange={handleChange} />
-        {(nameTouched && !name) ? <p className="text-red-500">Name is required</p> : null}
+        <input onBlur={handleNameTouched} onFocus={handleNameFocus} className={nameTouched && (!name || name.length < 2) ? "border border-red-500" : "hover:border-black hover:border-2"} required type="text" placeholder="Enter your name" value={name} onChange={handleChange} />
+        {nameTouched && !name ? <p className="text-red-500">input name</p> : null}
+        {nameTouched && name && name.length < 2 ? <p className="text-red-500">Name must be at least 2 characters long</p> : null}
       </label>
       <label className="border-black border-2 bg-white rounded-2xl p-4 justify-content-center">
         Quantity:
