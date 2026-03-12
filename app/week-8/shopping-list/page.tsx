@@ -1,4 +1,3 @@
-// week-8/shopping-list/page.js
 'use client';
 
 import Link from "next/link";
@@ -17,16 +16,9 @@ interface ItemProps {
   category: string;
 }
 
-/**
- * Clean an item name for use as an ingredient query.
- * - Take text before first comma (to remove sizes like "1 kg")
- * - Strip many emoji/symbol characters
- * - Trim whitespace
- */
 function cleanItemName(raw: string) {
   if (!raw) return "";
   const firstPart = raw.split(",")[0];
-  // conservative emoji/symbol stripping
   return firstPart.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uFE0F|[\u2011-\u26FF])/g, "").trim();
 }
 
@@ -36,8 +28,7 @@ export default function Page() {
 
   const [selectedItemName, setSelectedItemName] = useState<string>("");
 
-  // Protect: while auth state unknown => show loader.
-  // If auth definitely null => redirect to landing page ("/week-8" or "/" depending on routes).
+//protection, show redirect if not signed in
   useEffect(() => {
     if (user === null) {
       // redirect to landing page
@@ -54,7 +45,7 @@ export default function Page() {
     );
   }
 
-  // if user is null we triggered a redirect above; return nothing while router navigates
+  // specifically render nothing if user null, while redirect happens
   if (user === null) {
     return null;
   }
