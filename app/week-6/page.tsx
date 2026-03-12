@@ -14,8 +14,13 @@ interface ItemProps {
 }
 
 export default function Page() {
-    function handleAddItem(newItem: ItemProps) {
-        items.push(newItem);
+    function handleAddItem(newItem: { name: string; quantity: number; category: string }) {
+        const itemWithId: ItemProps = {
+            ...newItem,
+            id: Date.now().toString(),
+            sortBy: "name"
+        };
+        items.push(itemWithId);
     }
 
     return (
