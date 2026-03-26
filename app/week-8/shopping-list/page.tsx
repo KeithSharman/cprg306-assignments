@@ -50,7 +50,7 @@ export default function Page() {
     return null;
   }
 
-  // === Authenticated: render the shopping list ===
+  // at this point we know user is non-null, so render the page
   function handleAddItem(newItem: { name: string; quantity: number; category: string }) {
     const id = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
     const item: ItemProps = {
