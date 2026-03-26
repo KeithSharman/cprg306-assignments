@@ -37,6 +37,20 @@ export default function Page() {
     }
   }, [user, router]);
 
+  useEffect(() => {
+    loadItems();
+  }, [user]);
+  async function handleAddItem(newItem: { name: string; quantity: number; category: string }) {
+    const id = await addItem(user.uid, newItem);
+    const item: ItemProps = {
+      id,
+      name: newItem.name,
+      quantity: newItem.quantity,
+      category: newItem.category.toLowerCase(),
+    };
+    setItems([...items, item]);
+  }
+
   // while we don't know auth state yet, render loading
   if (user === undefined) {
     return (
@@ -57,19 +71,7 @@ export default function Page() {
     setItems(userItems);
   }
 
-  useEffect(() => {
-    loadItems();
-  }, [user]);
-  async function handleAddItem(newItem: { name: string; quantity: number; category: string }) {
-    const id = await addItem(user.uid, newItem);
-    const item: ItemProps = {
-      id,
-      name: newItem.name,
-      quantity: newItem.quantity,
-      category: newItem.category.toLowerCase(),
-    };
-    setItems([...items, item]);
-  }
+
 
   function handleItemSelect(item: ItemProps | null) {
     const rawName = item?.name ?? "";
