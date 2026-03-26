@@ -37,7 +37,7 @@ export default function Item({
             <div>
               <h3 className="font-bold">{name}</h3>
               <p className="text-sm text-gray-600">
-                Category: <span className="capitalize">{category}</span>
+                Quantity: {quantity} | Category: <span className="capitalize">{category}</span>
               </p>
             </div>
           ) : (
@@ -46,6 +46,7 @@ export default function Item({
                 Category: <span className="capitalize">{category}</span>
               </h3>
               <p className="font-bold">{name}</p>
+              <p className="text-sm text-gray-600">Quantity: {quantity}</p>
             </div>
           )}
         </div>

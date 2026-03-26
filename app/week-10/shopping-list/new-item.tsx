@@ -35,8 +35,6 @@ export default function NewItem({ onAddItem }: NewItemProps) {
             category: category
         };
         onAddItem(item);
-        console.log(item);
-        alert(`name: ${name}, Quantity: ${quantity}, category: ${category}`);
         setName("");
         setCount(1);
         setCategory("produce");
@@ -54,8 +52,8 @@ export default function NewItem({ onAddItem }: NewItemProps) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-row gap-4 border-black border-2 p-4 m-4 rounded-2xl justify-content-center bg-blue-50">
       <label className=" bg-white border-black border-2 rounded-2xl p-4 justify-content-center">
-        Name:
-        <input onBlur={handleNameTouched} onFocus={handleNameFocus} className={nameTouched && (!name || name.length < 2) ? "border border-red-500" : "hover:border-black hover:border-2"} required type="text" placeholder="Enter your name" value={name} onChange={handleChange} />
+        Item Name:
+        <input onBlur={handleNameTouched} onFocus={handleNameFocus} className={nameTouched && (!name || name.length < 2) ? "border border-red-500" : "hover:border-black hover:border-2"} required type="text" placeholder="Enter item name" value={name} onChange={handleChange} />
         {nameTouched && !name ? <p className="text-red-500">input name</p> : null}
         {nameTouched && name && name.length < 2 ? <p className="text-red-500">Name must be at least 2 characters long</p> : null}
       </label>
@@ -79,7 +77,7 @@ export default function NewItem({ onAddItem }: NewItemProps) {
           <option value="Other">Other</option>
         </select>
       </label>
-      <input disabled={!name || !category || !quantity} className="disabled:bg-gray-400 disabled:cursor-not-allowed border-black border-2 rounded-2xl p-4 justify-content-center w-30  bg-white enabled:bg-green-500" type="submit" value="Submit" />
+      <input disabled={!name || !category || !quantity} className="disabled:bg-gray-400 disabled:cursor-not-allowed border-black border-2 rounded-2xl p-4 justify-content-center w-30  bg-white enabled:bg-green-500" type="submit" value="Add Item" />
     </form>
   );
 }
