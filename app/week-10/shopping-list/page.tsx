@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useUserAuth } from "../_utils/auth-context"; // path: week-8/_utils/auth-context.js
+import { useUserAuth } from "../_utils/auth-context"; // path: week-10/_utils/auth-context.js
 import ItemList from "./item-list";
 import NewItem from "./new-item";
 import MealIdeas from "./meal-ideas";
@@ -33,7 +33,7 @@ export default function Page() {
   useEffect(() => {
     if (user === null) {
       // redirect to landing page
-      router.replace("/week-8");
+      router.replace("/week-10");
     }
   }, [user, router]);
 
@@ -81,7 +81,7 @@ export default function Page() {
     <main className="min-h-screen p-6 bg-slate-50">
       <h1 className="text-center text-2xl font-bold py-2 m-2">Shopping List</h1>
       <nav className="text-center text-lg p-1 m-1">
-        <Link href="/week-8" className="border border-black px-2 py-1 hover:bg-black hover:text-white">Home</Link>
+        <Link href="\" className="border border-black px-2 py-1 hover:bg-black hover:text-blue-500">Home</Link>
       </nav>
 
       <div className="flex gap-6 mt-6">

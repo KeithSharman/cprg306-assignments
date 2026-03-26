@@ -47,7 +47,7 @@ export default function LandingPage() {
               Welcome, <span className="font-semibold">{user.displayName || user.email}</span>
             </p>
             <div className="flex justify-center gap-3">
-              <Link href="/week-8/shopping-list" className="px-4 py-2 bg-blue-600 text-white rounded">
+              <Link href="/week-10/shopping-list" className="px-4 py-2 bg-blue-600 text-white rounded">
                 Go to Shopping List
               </Link>
               <button onClick={handleSignOut} className="px-4 py-2 border rounded">
