@@ -37,9 +37,10 @@ export default function Page() {
     }
   }, [user, router]);
 
-  useEffect(() => {
-    loadItems();
-  }, [user]);
+ useEffect(() => {
+  if (!user) return;
+  loadItems();
+}, [user]);
   async function handleAddItem(newItem: { name: string; quantity: number; category: string }) {
     const id = await addItem(user.uid, newItem);
     const item: ItemProps = {
